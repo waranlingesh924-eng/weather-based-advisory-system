@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Weather Based Farming Advisor System – Get crop suitability analysis, disease prediction, fertilizer recommendations, irrigation advisory, and market prices all in one place." />
+  <meta name="keywords" content="farming advisor, crop suitability, weather farming, agriculture, fertilizer, irrigation, market price" />
+  <meta name="author" content="Weather Farming Advisor" />
+  <title>Weather Based Farming Advisor System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="brand-icon">🌾</div>
+      Farming <span>Advisor</span>
+    </div>
+    <div class="navbar-info">
+      🇮🇳 &nbsp; India Farming Intelligence Platform
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <div class="hero-badge">🌿 AI-Assisted Farming Guidance</div>
+    <h1 class="hero-title">
+      Weather Based<br/>
+      <span class="highlight">Farming Advisor</span>
+    </h1>
+    <p class="hero-subtitle">
+      Enter your location, crop, and soil details to receive personalized
+      farming guidance — from suitability checks to market prices.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="stat-num">20+</span><span class="stat-label">Crops Covered</span></div>
+      <div class="hero-stat"><span class="stat-num">15</span><span class="stat-label">Indian States</span></div>
+      <div class="hero-stat"><span class="stat-num">8</span><span class="stat-label">Advisory Modules</span></div>
+      <div class="hero-stat"><span class="stat-num">5</span><span class="stat-label">Soil Types</span></div>
+    </div>
+    <button class="btn-primary" id="start-btn" onclick="startApp()">🚀 Start Analysis</button>
+    <div class="hero-modules">
+      <div class="module-pill"><span class="num">1</span> Location & Climate</div>
+      <div class="module-pill"><span class="num">2</span> Crop & Soil Info</div>
+      <div class="module-pill"><span class="num">3</span> Suitability Check</div>
+      <div class="module-pill"><span class="num">4</span> Disease Prediction</div>
+      <div class="module-pill"><span class="num">5</span> Fertilizer Guide</div>
+      <div class="module-pill"><span class="num">6</span> Irrigation Advisory</div>
+      <div class="module-pill"><span class="num">7</span> Market Price</div>
+      <div class="module-pill"><span class="num">8</span> Final Report</div>
+    </div>
+  </section>
+
+  <!-- APP SECTION -->
+  <div id="app-section">
+
+    <!-- Progress Bar -->
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="progress-step-label">Step 1 of 8</span>
+        <strong id="progress-pct">0%</strong>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <div class="step-dots" id="step-dots"></div>
+    </div>
+
+    <!-- MODULE 1: LOCATION & CLIMATE -->
+    <div class="module-card active" id="module-0">
+      <div class="module-header">
+        <div class="module-icon">📍</div>
+        <div class="module-header-text">
+          <h2>Module 1 — Location & Climate</h2>
+          <p>Enter your location and current climate information</p>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="m1-state">State <span class="req">*</span></label>
+          <select id="m1-state" class="form-control">
+            <option value="">-- Select State --</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="m1-district">District <span class="req">*</span></label>
+          <input type="text" id="m1-district" class="form-control" placeholder="e.g. Nashik, Guntur, Indore..." maxlength="80" />
+        </div>
+        <div class="form-group full">
+          <label for="m1-village">Village / Location Name <span class="req">*</span></label>
+          <input type="text" id="m1-village" class="form-control" placeholder="e.g. Rampur Village" maxlength="80" />
+        </div>
+        <div class="form-group full">
+          <label>Climate Type <span class="req">*</span></label>
+          <div class="climate-grid">
+            <div class="climate-option">
+              <input type="radio" name="climate" id="clim-summer" value="Summer" />
+              <label for="clim-summer" class="climate-label">
+                <span class="clim-icon">☀️</span><span class="clim-name">Summer</span>
+              </label>
+            </div>
+            <div class="climate-option">
+              <input type="radio" name="climate" id="clim-winter" value="Winter" />
+              <label for="clim-winter" class="climate-label">
+                <span class="clim-icon">❄️</span><span class="clim-name">Winter</span>
+              </label>
+            </div>
+            <div class="climate-option">
+              <input type="radio" name="climate" id="clim-rainy" value="Rainy" />
+              <label for="clim-rainy" class="climate-label">
+                <span class="clim-icon">🌧️</span><span class="clim-name">Rainy</span>
+              </label>
+            </div>
+            <div class="climate-option">
+              <input type="radio" name="climate" id="clim-autumn" value="Autumn" />
+              <label for="clim-autumn" class="climate-label">
+                <span class="clim-icon">🍂</span><span class="clim-name">Autumn</span>
+              </label>
+            </div>
+            <div class="climate-option">
+              <input type="radio" name="climate" id="clim-spring" value="Spring" />
+              <label for="clim-spring" class="climate-label">
+                <span class="clim-icon">🌸</span><span class="clim-name">Spring</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="module-nav">
+        <button class="btn btn-next" onclick="nextStep(0)">Next: Crop & Soil →</button>
+      </div>
+    </div>
+
+    <!-- MODULE 2: CROP & SOIL -->
+    <div class="module-card" id="module-1">
+      <div class="module-header">
+        <div class="module-icon">🌱</div>
+        <div class="module-header-text">
+          <h2>Module 2 — Crop & Soil Information</h2>
+          <p>Select your crop, soil type, and planting month</p>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="m2-crop">Crop Name <span class="req">*</span></label>
+          <select id="m2-crop" class="form-control">
+            <option value="">-- Select Crop --</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="m2-month">Planting Month <span class="req">*</span></label>
+          <select id="m2-month" class="form-control">
+            <option value="">-- Select Month --</option>
+            <option>January</option><option>February</option><option>March</option>
+            <option>April</option><option>May</option><option>June</option>
+            <option>July</option><option>August</option><option>September</option>
+            <option>October</option><option>November</option><option>December</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Soil Type <span class="req">*</span></label>
+          <div class="soil-grid">
+            <div class="soil-option">
+              <input type="radio" name="soil" id="soil-sandy" value="Sandy" />
+              <label for="soil-sandy" class="soil-label">
+                <span class="soil-icon">🟡</span><span class="soil-name">Sandy</span>
+              </label>
+            </div>
+            <div class="soil-option">
+              <input type="radio" name="soil" id="soil-clay" value="Clay" />
+              <label for="soil-clay" class="soil-label">
+                <span class="soil-icon">🟤</span><span class="soil-name">Clay</span>
+              </label>
+            </div>
+            <div class="soil-option">
+              <input type="radio" name="soil" id="soil-loamy" value="Loamy" />
+              <label for="soil-loamy" class="soil-label">
+                <span class="soil-icon">🪱</span><span class="soil-name">Loamy</span>
+              </label>
+            </div>
+            <div class="soil-option">
+              <input type="radio" name="soil" id="soil-black" value="Black Soil" />
+              <label for="soil-black" class="soil-label">
+                <span class="soil-icon">⚫</span><span class="soil-name">Black Soil</span>
+              </label>
+            </div>
+            <div class="soil-option">
+              <input type="radio" name="soil" id="soil-red" value="Red Soil" />
+              <label for="soil-red" class="soil-label">
+                <span class="soil-icon">🔴</span><span class="soil-name">Red Soil</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="module-nav">
+        <button class="btn btn-back" onclick="prevStep(1)">← Back</button>
+        <button class="btn btn-next" onclick="nextStep(1)">Next: Suitability →</button>
+      </div>
+    </div>
+
+    <!-- MODULE 3: SUITABILITY -->
+    <div class="module-card" id="module-2">
+      <div class="module-header">
+        <div class="module-icon">🔍</div>
+        <div class="module-header-text">
+          <h2>Module 3 — Crop Suitability Analysis</h2>
+          <p>Checking if your crop suits the selected soil and climate</p>
+        </div>
+      </div>
+      <div id="m3-result"></div>
+      <div class="module-nav">
+        <button class="btn btn-back" onclick="prevStep(2)">← Back</button>
+        <button class="btn btn-next" onclick="nextStep(2)">Next: Disease Prediction →</button>
+      </div>
+    </div>
+
+    <!-- MODULE 4: DISEASE PREDICTION -->
+    <div class="module-card" id="module-3">
+      <div class="module-header">
+        <div class="module-icon">🦠</div>
+        <div class="module-header-text">
+          <h2>Module 4 — Crop Disease Prediction</h2>
+          <p>Possible diseases based on your crop, soil & climate</p>
+        </div>
+      </div>
+      <div id="m4-result"></div>
+      <div class="module-nav">
+        <button class="btn btn-back" onclick="prevStep(3)">← Back</button>
+        <button class="btn btn-next" onclick="nextStep(3)">Next: Fertilizer →</button>
+      </div>
+    </div>
+
+    <!-- MODULE 5: FERTILIZER -->
+    <div class="module-card" id="module-4">
+      <div class="module-header">
+        <div class="module-icon">🧪</div>
+        <div class="module-header-text">
+          <h2>Module 5 — Fertilizer Recommendation</h2>
+          <p>Personalized fertilizer plan for your crop and soil</p>
+        </div>
+      </div>
+      <div id="m5-result"></div>
+      <div class="module-nav">
+        <button class="btn btn-back" onclick="prevStep(4)">← Back</button>
+        <button class="btn btn-next" onclick="nextStep(4)">Next: Irrigation →</button>
+      </div>
+    </div>
+
+    <!-- MODULE 6: IRRIGATION -->
+    <div class="module-card" id="module-5">
+      <div class="module-header">
+        <div class="module-icon">💧</div>
+        <div class="module-header-text">
+          <h2>Module 6 — Irrigation Advisory</h2>
+          <p>Recommended watering schedule and irrigation method</p>
+        </div>
+      </div>
+      <div id="m6-result"></div>
+      <div class="module-nav">
+        <button class="btn btn-back" onclick="prevStep(5)">← Back</button>
+        <button class="btn btn-next" onclick="nextStep(5)">Next: Market Price →</button>
+      </div>
+    </div>
+
+    <!-- MODULE 7: MARKET PRICE -->
+    <div class="module-card" id="module-6">
+      <div class="module-header">
+        <div class="module-icon">📊</div>
+        <div class="module-header-text">
+          <h2>Module 7 — Crop Market Price</h2>
+          <p>Current market price and trend for your selected crop</p>
+        </div>
+      </div>
+      <div id="m7-result"></div>
+      <div class="module-nav">
+        <button class="btn btn-back" onclick="prevStep(6)">← Back</button>
+        <button class="btn btn-next" onclick="nextStep(6)">📋 Generate Final Report →</button>
+      </div>
+    </div>
+
+    <!-- MODULE 8: FINAL REPORT -->
+    <div class="module-card" id="module-7">
+      <div class="module-header">
+        <div class="module-icon">📋</div>
+        <div class="module-header-text">
+          <h2>Module 8 — Farming Advisory & Final Report</h2>
+          <p>Complete farming guidance summary for your crop</p>
+        </div>
+      </div>
+      <div id="m8-result"></div>
+      <div class="module-nav">
+        <button class="btn btn-back" onclick="prevStep(7)">← Back</button>
+      </div>
+    </div>
+
+  </div><!-- /app-section -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>🌾 <strong>Weather Based Farming Advisor System</strong> &nbsp;|&nbsp; College Project &nbsp;|&nbsp; Built with HTML, CSS &amp; JavaScript</p>
+    <p style="margin-top:0.4rem;font-size:0.75rem">Data is illustrative. Always consult local agriculture department for official guidance.</p>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">⚠️ <span class="toast-msg"></span></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
